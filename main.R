@@ -32,6 +32,8 @@ predict_model<-predict(model, test_data)
 # as native speakers and how many are not
 m_at <- table(test_data$nativeSpeaker, predict_model)
 m_at
+ac_test <- sum(diag(m_at)) / sum(m_at)
+ac_test
 
 
 # Installing package
@@ -64,18 +66,5 @@ y_pred <- predict(classifier_RF, newdata = test[-5])
 # Confusion Matrix
 confusion_mtx <- table(test[, 5], y_pred)
 confusion_mtx
-# plot_confusion_matrix(c(test[, 5](), y_pred
-#                         # Plotting model
-#                         plot(classifier_RF)
-#
-#                         # Importance plot
-#                         #importance(classifier_RF)
-#
-#                         # Variable importance plot
-#                         #varImpPlot(classifier_RF)
-#
-#                         train
-#                         #drop fifth column
-#                         train[-5]
-#
-#                         test[, 5]))
+ac_test_2 <- sum(diag(confusion_mtx)) / sum(confusion_mtx)
+ac_test_2
